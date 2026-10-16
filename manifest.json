@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Shorts Truth Lens (Gemini Vision)",
+  "version": "3.1.0",
+  "description": "YouTube Shorts의 핵심 프레임을 캡처하여 Gemini 멀티모달 API로 AI 생성 가능성과 신뢰도를 분석합니다.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/shorts/*"],
+      "js": ["gemini.js", "content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Shorts Truth Lens (Gemini) 설정</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ Shorts Truth Lens (Gemini Vision) 설정</h1>
+    <p class="subtitle">Gemini 멀티모달 프레임 분석 기반 YouTube Shorts 신뢰도 검증 확장 프로그램 설정</p>
+
+    <div class="section">
+      <h2>Gemini API 연동 설정</h2>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="mockMode" checked> Mock 모드 활성화 (API 키 없이 시뮬레이션 테스트)
+        </label>
+        <span class="hint">실제 Gemini API를 사용하려면 이 체크를 해제하고 API 키를 입력하세요.</span>
+      </div>
+      <div class="form-group">
+        <label for="apiKey">Gemini API 키</label>
+        <input type="password" id="apiKey" placeholder="AIzaSy...">
+        <span class="hint">Google AI Studio에서 발급받은 API 키를 입력합니다. (로컬에 안전하게 저장됨)</span>
+      </div>
+      <div class="form-group">
+        <label for="geminiModel">Gemini 모델 식별자</label>
+        <input type="text" id="geminiModel" value="gemini-1.5-flash">
+        <span class="hint">멀티모달 이미지 입력에 최적화된 모델 (예: gemini-3.8-flash 또는 gemini-1.5-flash)</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>분석 및 UI 설정</h2>
+      <div class="form-group">
+        <label for="cacheExpiration">캐시 만료 시간 (초)</label>
+        <input type="number" id="cacheExpiration" value="3600" min="60" max="86400">
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="defaultCollapsed"> 패널 기본 접기 상태로 시작
+        </label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>예외 처리된 영상 목록</h2>
+      <p class="hint">분석 패널에서 '예외 추가'한 영상들의 ID 목록입니다.</p>
+      <ul id="excludedList" class="excluded-list"></ul>
+      <button class="btn btn-secondary" id="clearExcludedBtn">예외 목록 전체 비우기</button>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="saveBtn">설정 저장</button>
+      <span id="saveStatus" class="status-msg"></span>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
